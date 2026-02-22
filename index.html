@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Lysenko | Map Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+    <div class="header-content">
+        <span class="side-text">Цифровая</span>
+        <div class="logo-box">
+            <img src="images/logo.png" alt="Logo" class="logo-img">
+        </div>
+        <span class="side-text">Картография</span>
+    </div>
+</header>
+
+<main class="gallery-container">
+    <div class="map-item" onclick="window.openMap('images/map1.png', 'Костанайская область РК')">
+        <img src="images/map1.png" alt="Превью">
+        <div class="map-overlay"><span>Костанайская область РК</span></div>
+    </div>
+
+ <div class="map-item" onclick="window.openMap('images/map2.png', 'Район им. Г. Мусрепова СКО РК')">
+        <img src="images/map2.png" alt="Превью">
+        <div class="map-overlay"><span>Район им. Г. Мусрепова СКО РК</span></div>
+    </div>
+
+ <div class="map-item" onclick="window.openMap('images/map3.png', 'Северо-Казахстанская область РК')">
+        <img src="images/map3.png" alt="Превью">
+        <div class="map-overlay"><span>Северо-Казахстанская область РК</span></div>
+    </div>
+
+ <div class="map-item" onclick="window.openMap('images/map4.png', 'Павлодарская область РК')">
+        <img src="images/map4.png" alt="Превью">
+        <div class="map-overlay"><span>Павлодарская область РК</span></div>
+    </div>
+
+    </main>
+
+<div id="modal" class="modal-overlay">
+    <div class="modal-scroll-container" id="modal-container">
+        <div class="image-wrapper">
+            <img id="full-image" src="" alt="Карта">
+            <div class="shield"></div> </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="footer-text">
+            <p>Уважаемые посетители! Здесь я размещаю свои работы в более высоком качестве, чем на страницах Threads и Instagram. Каждая карта — это попытка запечатлеть уникальную пластику земной поверхности вкупе с инфраструктурой ее покрывающей. Каждая карта — результат кропотливого труда.</p>
+            <p><strong>Если вас заинтересовала моя работа и вы хотите приобрести / заказать такую либо подобную карту — напишите: WA 87755516942 / ktesifon@yandex.ru.</strong></p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal-overlay" onclick="closeMap()">
+        <div class="modal-body" onclick="event.stopPropagation()">
+            <span class="close-btn">&times;</span>
+            <img id="full-image" src="" alt="Full Map">
+            <div class="info-plaque">
+                <h2 id="modal-title"></h2>
+                <p id="modal-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

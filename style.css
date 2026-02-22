@@ -1,0 +1,420 @@
+:root {
+    --brand-color: #336666;        /* Твой #366 */
+    --header-footer-bg: #f5f8f0;   /* Твой серый */
+    --site-bg: #4a4f55;            /* Твой фон */
+}
+
+body {
+    margin: 0;
+    background-color: var(--site-bg);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #4a4f55;
+}
+
+/* ХЕДЕР */
+header {
+    background-color: #f5f8f0; /* Твой светлый фон */
+    padding: 10px 0;           /* Минимальная толщина хедера */
+    border-bottom: 5px solid #4a4f55; /* Твоя темная полоса */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Собирает всё в центре */
+    gap: 60px;               /* РАССТОЯНИЕ слов от логотипа (подправь под себя) */
+}
+
+.logo-box {
+    height: 70px;              /* Высота логотипа, которая держит тонкий хедер */
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 100%;
+    width: auto;
+}
+
+.side-text {
+    color: #336666;            /* Твой фирменный цвет */
+    font-size: 2.1rem;         /* Крупный шрифт */
+    font-weight: 500;          /* Полужирный (максимальный) */
+    text-transform: uppercase; /* БОЛЬШИМИ БУКВАМИ */
+    font-family: 'Arial Black', sans-serif;
+    white-space: nowrap;
+}
+
+/* ГАЛЕРЕЯ (КОЛЛАЖ) */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map-item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #ddd; /* Цвет, если фото не подгрузится */
+}
+
+.map-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.map-item:hover png {
+    transform: scale(1.05);
+}
+
+/* ФУТЕР */
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--site-bg);
+    padding: 10px 10%;
+    text-align: center;
+    line-height: 1.2;
+    margin-top: 40px;
+}
+
+/* МОДАЛЬНОЕ ОКНО */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#full-image {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+}
+
+.info-plaque {
+    background: var(--site-bg);
+    padding: 20px;
+    color: #4a4f55;
+    border-radius: 0 0 5px 5px;
+}
+
+.info-plaque h2 { color: var(--brand-color); margin: 0 0 10px 0; }
+
+.close-btn {
+    position: absolute;
+    top: -40px; right: 0;
+    color: white; font-size: 35px; cursor: pointer;
+}
+
+/* --- ПРЕВЬЮ В СЕТКЕ --- */
+.map-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #e0e0e0; /* Если картинки нет, увидишь серый квадрат */
+    display: block; /* Гарантируем, что контейнер активен */
+}
+
+.map-item img {
+    position: absolute; /* Картинка прибита к углам блока */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Карта заполняет квадрат полностью */
+    z-index: 1; /* Картинка на самом нижнем слое */
+    display: block !important; /* Убираем любые попытки скрыть фото */
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 102, 102, 0.85); /* Твой фирменный #366 */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5; /* Название ВСЕГДА поверх картинки */
+    text-align: center;
+    padding: 10%;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+}
+
+.map-item:hover .map-overlay {
+    opacity: 1;
+}
+
+/* --- МОДАЛЬНОЕ ОКНО И ЗУМ --- */
+.modal-scroll-container {
+    display: flex; /* Оставляем flex для начальной центровки */
+    overflow: auto; /* Включает прокрутку, когда картинка становится 200% */
+    width: 100%;
+    height: 100%;
+}
+
+#full-image {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease; /* Плавный переход размеров */
+    cursor: zoom-in;
+    display: block;
+    margin: auto; /* Центрируем внутри скролл-контейнера */
+}
+
+/* Состояние увеличения ровно в 2 раза */
+#full-image.zoomed {
+    max-width: none; 
+    max-height: none;
+    
+    /* Увеличиваем физический размер в 2 раза */
+    /* Теперь браузер увидит реальные габариты и включит скролл */
+    width: 200%; 
+    height: auto;
+    
+    cursor: zoom-out;
+    margin: 0; /* Убираем авто-центрирование для корректного скролла от углов */
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 102, 102, 0.85); /* Твой #366 */
+    color: white;
+    
+    /* ГЛАВНОЕ ДЛЯ ЦЕНТРОВКИ: */
+    display: flex;
+    align-items: center;      /* Центр по вертикали */
+    justify-content: center;   /* Центр по горизонтали */
+    text-align: center;        /* Центр самого текста внутри строк */
+    
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    padding: 10px;             /* Небольшой внутренний отступ, чтобы текст не лип к краям */
+    box-sizing: border-box;    /* Чтобы padding не увеличивал размер блока */
+}
+
+/* Убираем лишние отступы у параграфа внутри оверлея */
+.map-overlay p {
+    margin: 0;
+    font-size: 1.2rem;         /* Настрой размер под свой вкус */
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.2;          /* Плотность строк */
+}
+
+/* ВЕРТИКАЛЬНАЯ ЦЕНТРОВКА ГАЛЕРЕИ */
+
+/* 1. Делаем всё тело сайта гибким на всю высоту экрана */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Высота на весь экран */
+    margin: 0;
+}
+
+/* 2. Заставляем галерею занять всё свободное место */
+.gallery-container {
+    flex-grow: 1;          /* Растягивается, выталкивая футер вниз */
+    display: grid;
+    align-content: center; /* МАГИЯ: центрирует ряды сетки по вертикали */
+    
+    /* Добавляем немного воздуха сверху и снизу */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* 3. Гарантируем, что футер всегда внизу */
+footer {
+    margin-top: auto;
+}
+
+/* Создаем невидимый слой поверх всех картинок в галерее */
+.map-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Слой выше картинки */
+    background: rgba(0,0,0,0); /* Полностью прозрачный */
+}
+
+/* Аналогичный щит для открытой большой карты */
+.modal-scroll-container::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2500;
+    background: rgba(0,0,0,0);
+}
+/* Исправление защитного слоя для работы зума */
+.modal-scroll-container {
+    position: relative;
+    cursor: zoom-in; /* Сразу показываем лупу при наведении на карту */
+}
+
+.modal-scroll-container::after {
+    /* Этот слой блокирует правую кнопку мыши, но пропускает клик в JS */
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 200%; /* Запас ширины для зума */
+    height: 200%; /* Запас высоты для зума */
+    z-index: 2500;
+    background: rgba(0,0,0,0);
+}
+
+#full-image.zoomed {
+    transform: scale(2);
+    cursor: zoom-out;
+    z-index: 1000;
+    /* Убеждаемся, что при зуме карта не обрезается */
+    margin: 50% 50%; 
+}
+/* 1. Контейнер для скролла — теперь на Grid */
+.modal-scroll-container {
+    width: 100%;
+    height: 100%;
+    display: grid;          /* Grid лучше справляется с центровкой больших объектов */
+    place-items: center;    /* Центрирует и по вертикали, и по горизонтали */
+    overflow: auto;         /* Включает скролл */
+    position: relative;
+    background: transparent;
+}
+
+/* 2. Защитный слой (щит) */
+.modal-scroll-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    /* Важно: щит должен растягиваться по размеру контента, а не экрана */
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 2500;
+    background: rgba(0,0,0,0);
+    pointer-events: all; /* Принимает клики для защиты */
+}
+
+/* 3. Сама карта */
+#full-image {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: width 0.3s ease; /* Плавное расширение */
+    cursor: zoom-in;
+    z-index: 1000;
+    display: block;
+}
+
+/* 4. СОСТОЯНИЕ ЗУМА (ИСПРАВЛЕНО) */
+#full-image.zoomed {
+    /* Снимаем ограничения, чтобы карта могла расти */
+    max-width: none;
+    max-height: none;
+    
+    /* Увеличиваем в 2 раза */
+    width: 200vw; 
+    
+    cursor: zoom-out;
+    /* Убираем центровку через margin, так как Grid сделает всё сам */
+    margin: 0; 
+}
+/* Контейнер для скролла */
+.modal-scroll-container {
+    display: flex;      /* Используем Flex для начальной центровки */
+    overflow: auto;     /* Включает скролл */
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+/* Сама карта */
+#full-image {
+    margin: auto;       /* ГЛАВНОЕ: исправляет обрезку краев при увеличении */
+    width: auto;
+    height: auto;
+    max-width: 95vw;    /* Начальный размер */
+    max-height: 95vh;   /* Начальный размер */
+    object-fit: contain;
+    transition: width 0.1s ease-out; /* Плавность для зума мышью */
+    display: block;
+    z-index: 1000;
+}
+
+/* Убираем старый класс .zoomed, так как теперь зум управляется через JS */
+/* Модалка и контейнер */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 3000;
+}
+
+.modal-scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex; /* Центровка через flex */
+}
+
+.image-wrapper {
+    position: relative;
+    margin: auto; /* Магия: центрирует, пока влазит, и дает скролл от 0,0 когда нет */
+    display: inline-block;
+}
+
+#full-image {
+    display: block;
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    transition: width 0.1s ease-out; /* Плавность зума */
+}
+
+/* Прозрачный щит поверх большой картинки */
+.shield {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 3010;
+    background: rgba(0,0,0,0);
+}
