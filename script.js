@@ -7,6 +7,19 @@ const modal = document.getElementById('modal');
 const img = document.getElementById('full-image');
 const container = document.getElementById('modal-container');
 
+function toggleCountry() {
+    const list = document.getElementById('regionsList');
+    const bar = document.querySelector('.country-bar');
+    list.classList.toggle('open');
+    bar.classList.toggle('open');
+}
+
+function toggleRegion(element) {
+    const content = element.nextElementSibling;
+    element.classList.toggle('open');
+    content.classList.toggle('open');
+}
+
 window.openMap = function(src) {
     img.src = src;
     modal.style.display = 'flex';
@@ -20,7 +33,6 @@ window.openMap = function(src) {
     container.scrollTop = 0;
 };
 
-// Закрытие только по клику на фон или область контейнера, но не на щит/картинку
 modal.onclick = (e) => {
     if (e.target.id === 'modal' || e.target.id === 'modal-container') {
         modal.style.display = 'none';
@@ -30,7 +42,6 @@ modal.onclick = (e) => {
 
 container.onwheel = (e) => {
     e.preventDefault();
-    
     const delta = e.deltaY > 0 ? -step : step;
     scale = Math.min(Math.max(minScale, scale + delta), maxScale);
 
