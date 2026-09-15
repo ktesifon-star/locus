@@ -19,40 +19,220 @@
     </header>
 
     <main class="gallery-container">
-        <div class="map-item" onclick="window.openMap('images/map1.png', 'Костанайская область РК')">
-            <img src="images/map1.png" alt="Превью">
-            <div class="map-overlay"><span>Костанайская область РК</span></div>
-        </div>
+        <div class="country-accordion">
+            <div class="country-bar" onclick="toggleCountry()">
+                <span>Казахстан</span>
+                <span class="arrow">▼</span>
+            </div>
 
-        <div class="map-item" onclick="window.openMap('images/map2.png', 'Район им. Г. Мусрепова СКО РК')">
-            <img src="images/map2.png" alt="Превью">
-            <div class="map-overlay"><span>Район им. Г. Мусрепова СКО РК</span></div>
-        </div>
+            <div class="regions-list" id="regionsList">
+                
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Абайская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
 
-        <div class="map-item" onclick="window.openMap('images/map3.png', 'Северо-Казахстанская область РК')">
-            <img src="images/map3.png" alt="Превью">
-            <div class="map-overlay"><span>Северо-Казахстанская область РК</span></div>
-        </div>
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Акмолинская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map6.png')">
+                                <img src="images/map6.png" alt="Акмолинская область РК">
+                                <div class="map-overlay"><span>Акмолинская область РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="map-item" onclick="window.openMap('images/map4.png', 'Павлодарская область РК')">
-            <img src="images/map4.png" alt="Превью">
-            <div class="map-overlay"><span>Павлодарская область РК</span></div>
-        </div>
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Актюбинская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
 
-        <div class="map-item" onclick="window.openMap('images/map5.png', 'Сузакский р-н Туркестанская обл. РК')">
-            <img src="images/map5.png" alt="Превью">
-            <div class="map-overlay"><span>Сузакский р-н Туркестанская обл. РК</span></div>
-        </div>
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Алматинская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
 
-        <div class="map-item" onclick="window.openMap('images/map6.png', 'Акмолинская область РК')">
-            <img src="images/map6.png" alt="Превью">
-            <div class="map-overlay"><span>Акмолинская область РК</span></div>
-        </div>
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Атырауская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
 
-        <div class="map-item" onclick="window.openMap('images/map7.png', 'Западно-Казахстанская область РК')">
-    <img src="images/map7.png" alt="Превью">
-    <div class="map-overlay"><span>Западно-Казахстанская область РК</span></div>
-</div>
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Восточно-Казахстанская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Жамбылская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Жетысуская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Западно-Казахстанская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map7.png')">
+                                <img src="images/map7.png" alt="Западно-Казахстанская область РК">
+                                <div class="map-overlay"><span>Западно-Казахстанская область РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Карагандинская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Костанайская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map1.png')">
+                                <img src="images/map1.png" alt="Костанайская область РК">
+                                <div class="map-overlay"><span>Костанайская область РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Кызылординская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Мангистауская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Павлодарская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map4.png')">
+                                <img src="images/map4.png" alt="Павлодарская область РК">
+                                <div class="map-overlay"><span>Павлодарская область РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Северо-Казахстанская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map3.png')">
+                                <img src="images/map3.png" alt="Северо-Казахстанская область РК">
+                                <div class="map-overlay"><span>Северо-Казахстанская область РК</span></div>
+                            </div>
+                            <div class="map-item" onclick="window.openMap('images/map2.png')">
+                                <img src="images/map2.png" alt="Район им. Г. Мусрепова СКО РК">
+                                <div class="map-overlay"><span>Район им. Г. Мусрепова СКО РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Туркестанская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid">
+                            <div class="map-item" onclick="window.openMap('images/map5.png')">
+                                <img src="images/map5.png" alt="Сузакский р-н Туркестанская обл. РК">
+                                <div class="map-overlay"><span>Сузакский р-н Туркестанская обл. РК</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="region-item">
+                    <div class="region-bar" onclick="toggleRegion(this)">
+                        <span>Улытауская область</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="region-content">
+                        <div class="region-grid"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </main>
 
     <div id="modal" class="modal-overlay">
@@ -66,8 +246,7 @@
 
     <footer>
         <div class="footer-text">
-            <p>Уважаемые посетители! Здесь я размещаю свои работы в более высоком качестве, чем на страницах Threads и Instagram. Каждая карта — это попытка запечатлеть уникальную пластику земной поверхности вкупе с инфраструктурой ее покрывающей. Каждая карта — результат кропотливого труда. Важное замечание: я создаю только цифровую версию, картинку. Если вам необходима печатная карта, сообщите мне и мы посмотрим что можно сделать!</p>
-            <p><strong>Если вас заинтересовала моя работа и вы хотите приобрести / заказать такую либо подобную карту — напишите: WA 87755516942 / ktesifon@yandex.ru.</strong></p>
+            <p>По вопросам заказа / приобретения карт: WA 87755516942 / ktesifon@yandex.ru.</p>
         </div>
     </footer>
 
