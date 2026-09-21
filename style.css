@@ -89,8 +89,8 @@ header {
 }
 
 .region-bar {
-    background-color: rgba(245, 248, 240, 0.15);
-    color: var(--header-footer-bg);
+    background-color: var(--header-footer-bg);
+    color: var(--brand-color);
     padding: 12px 20px;
     font-size: 1.1rem;
     font-family: 'Arial Black', sans-serif;
@@ -100,12 +100,13 @@ header {
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
-    border: 1px solid var(--header-footer-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
     user-select: none;
 }
 
 .region-bar:hover {
-    background-color: rgba(245, 248, 240, 0.25);
+    background-color: #e8ede0;
 }
 
 .region-content {
