@@ -4,34 +4,51 @@
     --site-bg: #4a4f55;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
     background-color: var(--site-bg);
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #4a4f55;
 }
 
 header {
-    background-color: var(--header-footer-bg);
-    padding: 10px 0;
-    border-bottom: 5px solid var(--site-bg);
-    display: flex;
-    justify-content: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     width: 100%;
+    background-color: var(--header-footer-bg);
+    padding: 8px 12px;
+    border-bottom: 4px solid var(--site-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: clamp(10px, 3vw, 40px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo-box {
-    height: 70px;
+    height: clamp(38px, 8vw, 65px);
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -45,20 +62,20 @@ header {
 
 .side-text {
     color: var(--brand-color);
-    font-size: 2.1rem;
+    font-size: clamp(0.85rem, 3.5vw, 1.8rem);
     font-weight: 500;
     text-transform: uppercase;
     font-family: 'Frutiger LT CYR 57', sans-serif;
     white-space: nowrap;
+    line-height: 1;
 }
 
 .gallery-container {
     flex-grow: 1;
-    padding: 40px 20px;
+    padding: 30px 15px;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .country-bar {
@@ -73,7 +90,7 @@ header {
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     user-select: none;
 }
 
@@ -144,25 +161,30 @@ header {
 
 .map-item img {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
 
 .map-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(51, 102, 102, 0.85);
     color: white;
     display: flex;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 5;
     text-align: center;
     padding: 10px;
-    box-sizing: border-box;
 }
 
 .map-item:hover .map-overlay {
@@ -187,13 +209,17 @@ footer {
 .modal-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
     z-index: 3000;
 }
 
 .modal-scroll-container {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     overflow: auto;
     display: flex;
 }
@@ -208,12 +234,16 @@ footer {
     display: block;
     max-width: 95vw;
     max-height: 95vh;
-    width: auto; height: auto;
+    width: auto;
+    height: auto;
 }
 
 .shield {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 3010;
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
 }
