@@ -1,261 +1,111 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Lysenko | Map Design</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LOCUS — авторская цифровая картография Казахстана. Карты рельефа областей и районов, раскрывающие пластику земной поверхности в административном контексте.">
+  <meta name="theme-color" content="#173f3c">
+  <meta property="og:title" content="LOCUS — цифровая картография Казахстана">
+  <meta property="og:description" content="Авторские карты рельефа Казахстана: пластика земной поверхности в пространстве областей и районов.">
+  <meta property="og:type" content="website">
+  <title>LOCUS — цифровая картография Казахстана</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LOCUS — на главную">
+      <span class="brand-kicker">Цифровая</span>
+      <span class="brand-logo-wrap"><img src="images/logo.png" alt="LOCUS" class="brand-logo"></span>
+      <span class="brand-kicker">Картография</span>
+    </a>
+    <nav class="header-nav" aria-label="Основная навигация">
+      <a href="#catalog">Каталог</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
 
-    <header>
-        <div class="header-content">
-            <span class="side-text">Цифровая</span>
-            <div class="logo-box">
-                <img src="images/logo.png" alt="Logo" class="logo-img">
-            </div>
-            <span class="side-text">Картография</span>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Цифровая картография Казахстана</p>
+        <h1>Рельеф как образ территории.</h1>
+        <p class="hero-copy">LOCUS — авторский картографический проект, в котором пластика земной поверхности становится главным образом территории. Рельеф, формы местности и высотные различия формируют картографический образ.</p>
+        <p class="hero-copy hero-copy-secondary">Административные границы, населённые пункты, дороги и гидрография служат пространственным контекстом, связывая природную структуру местности с привычной географией областей и районов Казахстана.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalog">Смотреть карты</a>
+          <a class="button button-secondary" href="#contact">Заказать карту</a>
         </div>
-    </header>
+        <dl class="hero-stats" aria-label="Статистика коллекции">
+          <div><dt id="mapCount">8</dt><dd>карт в каталоге</dd></div>
+          <div><dt id="regionCount">6</dt><dd>регионов представлены</dd></div>
+          <div><dt>2026</dt><dd>LOCUS</dd></div>
+        </dl>
+      </div>
+    </section>
 
-    <main class="gallery-container">
-        <div class="country-accordion">
-            <div class="country-bar" onclick="toggleCountry()">
-                <span>Республика Казахстан</span>
-                <span class="arrow">▼</span>
-            </div>
-
-            <div class="regions-list" id="regionsList">
-                
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Абайская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Акмолинская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map6.png')">
-                                <img src="images/map6.png" alt="Акмолинская область РК">
-                                <div class="map-overlay"><span>Акмолинская область РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Актюбинская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Алматинская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Атырауская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Восточно-Казахстанская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Жамбылская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Жетысуская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Западно-Казахстанская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map7.png')">
-                                <img src="images/map7.png" alt="Западно-Казахстанская область РК">
-                                <div class="map-overlay"><span>Западно-Казахстанская область РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Карагандинская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Костанайская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map1.png')">
-                                <img src="images/map1.png" alt="Костанайская область РК">
-                                <div class="map-overlay"><span>Костанайская область РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Кызылординская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Мангистауская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Павлодарская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map4.png')">
-                                <img src="images/map4.png" alt="Павлодарская область РК">
-                                <div class="map-overlay"><span>Павлодарская область РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Северо-Казахстанская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map3.png')">
-                                <img src="images/map3.png" alt="Северо-Казахстанская область РК">
-                                <div class="map-overlay"><span>Северо-Казахстанская область РК</span></div>
-                            </div>
-                            <div class="map-item" onclick="window.openMap('images/map2.png')">
-                                <img src="images/map2.png" alt="Район им. Г. Мусрепова СКО РК">
-                                <div class="map-overlay"><span>Район им. Г. Мусрепова СКО РК</span></div>
-                            </div>
-                            <div class="map-item" onclick="window.openMap('images/map8.png')">
-                                <img src="images/map8.png" alt="Айыртауский район СКО РК">
-                                <div class="map-overlay"><span>Айыртауский район СКО РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Туркестанская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid">
-                            <div class="map-item" onclick="window.openMap('images/map5.png')">
-                                <img src="images/map5.png" alt="Сузакский р-н Туркестанская обл. РК">
-                                <div class="map-overlay"><span>Сузакский р-н Туркестанская обл. РК</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="region-item">
-                    <div class="region-bar" onclick="toggleRegion(this)">
-                        <span>Улытауская область</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="region-content">
-                        <div class="region-grid"></div>
-                    </div>
-                </div>
-
-            </div>
+    <section class="catalog-section" id="catalog">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Каталог</p>
+          <h2>Карты Казахстана</h2>
         </div>
-    </main>
+        <p>Выберите все карты, карты районов или карты областей.</p>
+      </div>
 
-    <div id="modal" class="modal-overlay">
-        <div class="modal-scroll-container" id="modal-container">
-            <div class="image-wrapper">
-                <img id="full-image" src="" alt="Карта">
-                <div class="shield"></div>
-            </div>
+      <div class="catalog-toolbar">
+        <div class="filter-tabs" role="group" aria-label="Фильтр карт">
+          <button class="filter-tab active" data-filter="all" type="button">Все</button>
+          <button class="filter-tab" data-filter="district" type="button">Районы</button>
+          <button class="filter-tab" data-filter="region" type="button">Области</button>
         </div>
+      </div>
+
+      <div class="map-grid" id="mapGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>По вашему запросу карты не найдены.</p>
+
+      <p class="catalog-note">По мере работы карты всех областей Казахстана появятся в каталоге.</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-card">
+        <div class="contact-intro">
+          <p class="eyebrow">Заказ и сотрудничество</p>
+          <h2>Нужна карта для вашего проекта?</h2>
+        </div>
+        <div class="contact-details">
+          <p>Телефон / WhatsApp: <span>87755516942</span></p>
+          <p>Почта: <span>ktesifon@yandex.ru</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 LOCUS · Барлық құқықтар қорғалған · Все права защищены · All rights reserved.</p>
+    <p class="donate-note">Если карты вам нравятся, вы можете поддержать дальнейшую работу над проектом.</p>
+  </footer>
+
+  <dialog class="map-dialog" id="mapDialog" aria-labelledby="dialogTitle">
+    <div class="viewer-shell">
+      <div class="viewer-toolbar">
+        <div class="viewer-title-block">
+          <span class="viewer-kicker" id="dialogRegion"></span>
+          <strong id="dialogTitle"></strong>
+        </div>
+        <div class="viewer-controls">
+          <button type="button" data-action="zoom-out" aria-label="Уменьшить">−</button>
+          <button type="button" data-action="reset" aria-label="Масштаб 100%"><span id="zoomValue">100%</span></button>
+          <button type="button" data-action="zoom-in" aria-label="Увеличить">+</button>
+          <button class="viewer-close" type="button" data-action="close" aria-label="Закрыть">×</button>
+        </div>
+      </div>
+      <div class="viewer-stage" id="viewerStage">
+        <img id="viewerImage" alt="" draggable="false">
+      </div>
+      <p class="viewer-hint">Колёсико мыши — масштаб · Esc — закрыть</p>
     </div>
+  </dialog>
 
-    <footer>
-        <div class="footer-text">
-            <p>По вопросам заказа / приобретения карт: WA 87755516942 / ktesifon@yandex.ru.
-            </p> Если мои карты Вам нравятся, вы можете сделать донат, чтобы поддержать мою дальнейшую работу.
-            </p>© 2026 Locus. Барлық құқықтар қорғалған. Все права защищены. All rights reserved.
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
