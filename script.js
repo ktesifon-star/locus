@@ -1,12 +1,12 @@
 const maps = [
-  { src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', typeLabel: 'Карта области' },
-  { src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', typeLabel: 'Карта области' },
-  { src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', typeLabel: 'Карта области' },
-  { src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', typeLabel: 'Карта области' },
-  { src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', typeLabel: 'Карта области' },
-  { src: 'images/map2.png', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района' },
-  { src: 'images/map8.png', title: 'Айыртауский район', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района' },
-  { src: 'images/map5.png', title: 'Сузакский район', region: 'Туркестанская область', type: 'district', typeLabel: 'Карта района' }
+  { src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map2.png', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map8.png', title: 'Айыртауский район', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map5.png', title: 'Сузакский район', region: 'Туркестанская область', type: 'district', typeLabel: 'Карта района', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
 ];
 
 
@@ -19,6 +19,21 @@ const viewerStage = document.getElementById('viewerStage');
 const dialogTitle = document.getElementById('dialogTitle');
 const dialogRegion = document.getElementById('dialogRegion');
 const zoomValue = document.getElementById('zoomValue');
+const viewerShell = dialog.querySelector('.viewer-shell');
+
+const passport = document.createElement('dl');
+passport.className = 'map-passport';
+passport.setAttribute('aria-label', 'Паспорт карты');
+passport.innerHTML = `
+  <div><dt>Год</dt><dd id="passportYear"></dd></div>
+  <div><dt>Проекция</dt><dd id="passportProjection"></dd></div>
+  <div><dt>Источник DEM</dt><dd id="passportDem"></dd></div>
+`;
+viewerShell.appendChild(passport);
+
+const passportYear = document.getElementById('passportYear');
+const passportProjection = document.getElementById('passportProjection');
+const passportDem = document.getElementById('passportDem');
 
 let activeFilter = 'all';
 let zoom = 1;
@@ -73,6 +88,12 @@ function openMap(button) {
   const sameName = button.dataset.title === button.dataset.region;
   dialogRegion.hidden = sameName;
   dialogRegion.textContent = sameName ? '' : button.dataset.region;
+
+  const map = maps.find(item => item.src === button.dataset.src);
+  passportYear.textContent = map?.year || '—';
+  passportProjection.textContent = map?.projection || '—';
+  passportDem.textContent = map?.dem || '—';
+
   resetZoom();
   dialog.showModal();
   document.body.style.overflow = 'hidden';
