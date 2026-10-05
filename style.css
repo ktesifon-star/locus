@@ -93,7 +93,9 @@ img { max-width: 100%; }
   width: min(44vw, 560px);
   aspect-ratio: 1;
   transform: translateY(-50%);
-  background: url("images/logo.png") center / contain no-repeat;
+  background-color: var(--paper);
+  -webkit-mask: url("images/logo.png") center / contain no-repeat;
+  mask: url("images/logo.png") center / contain no-repeat;
   opacity: 0.09;
   pointer-events: none;
   user-select: none;
