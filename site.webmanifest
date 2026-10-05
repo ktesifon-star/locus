@@ -1,0 +1,18 @@
+{
+  "name": "LOCUS — цифровая картография Казахстана",
+  "short_name": "LOCUS",
+  "description": "Авторские карты рельефа областей и районов Казахстана.",
+  "start_url": "/locus/",
+  "scope": "/locus/",
+  "display": "standalone",
+  "background_color": "#f4f2ea",
+  "theme_color": "#173f3c",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
