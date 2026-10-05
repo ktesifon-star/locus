@@ -115,7 +115,7 @@ img { max-width: 100%; }
   transform: rotate(-10deg);
   box-shadow: 0 0 0 40px rgba(255,255,255,.025), 0 0 0 90px rgba(255,255,255,.018);
 }
-.hero-inner { position: relative; z-index: 1; max-width: 790px; }
+.hero-inner { position: relative; z-index: 1; width: 100%; max-width: 100%; }
 .eyebrow {
   margin: 0 0 16px;
   color: var(--brand);
@@ -124,16 +124,19 @@ img { max-width: 100%; }
   letter-spacing: .16em;
   text-transform: uppercase;
 }
-.hero .eyebrow { color: #c7ddd8; }
+.hero .eyebrow { color: #c7ddd8; text-align: center; }
 h1, h2, p { margin-top: 0; }
 h1 {
-  max-width: 800px;
+  width: 100%;
+  max-width: none;
   margin-bottom: 22px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.8rem, 7vw, 6.8rem);
+  font-size: clamp(2.8rem, 5.8vw, 6rem);
   font-weight: 400;
   letter-spacing: -.045em;
   line-height: .94;
+  text-align: center;
+  white-space: nowrap;
 }
 .hero-copy {
   max-width: 680px;
@@ -496,7 +499,10 @@ h2 {
     top: 55%;
     opacity: 0.05;
   }
-  h1 { font-size: clamp(2.7rem, 13vw, 4.7rem); }
+  h1 {
+    font-size: clamp(2.7rem, 13vw, 4.7rem);
+    white-space: normal;
+  }
   .hero-stats { gap: 20px; }
   .catalog-section, .about-section { padding-top: 64px; padding-bottom: 64px; }
   .catalog-toolbar { align-items: stretch; flex-direction: column; }
