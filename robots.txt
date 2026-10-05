@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ktesifon-star.github.io/locus/sitemap.xml
