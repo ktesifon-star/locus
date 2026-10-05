@@ -85,6 +85,21 @@ img { max-width: 100%; }
     radial-gradient(circle at 78% 35%, rgba(255,255,255,.11), transparent 0 19%, transparent 20%),
     linear-gradient(135deg, #193f3b 0%, #285c56 52%, #173632 100%);
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: min(44vw, 560px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background: url("images/logo.png") center / contain no-repeat;
+  opacity: 0.09;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
 .hero::after {
   content: "";
   position: absolute;
@@ -432,6 +447,12 @@ h2 {
   .brand-logo-wrap { height: 42px; }
   .brand-kicker { font-size: .58rem; letter-spacing: .08em; }
   .hero { min-height: 540px; padding-top: 58px; padding-bottom: 58px; }
+  .hero::before {
+    width: 330px;
+    right: -120px;
+    top: 55%;
+    opacity: 0.05;
+  }
   h1 { font-size: clamp(2.7rem, 13vw, 4.7rem); }
   .hero-stats { gap: 20px; }
   .catalog-section, .about-section { padding-top: 64px; padding-bottom: 64px; }
