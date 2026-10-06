@@ -1,6 +1,7 @@
 const maps = [
   { src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { src: 'images/map9.png', title: 'Атырауская область', region: 'Атырауская область', type: 'region', typeLabel: 'Карта области', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
   { src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
   { src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
   { src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
