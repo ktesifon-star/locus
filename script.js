@@ -149,3 +149,41 @@ viewerImage.addEventListener('dragstart', event => event.preventDefault());
 
 updateStats();
 renderMaps();
+
+
+/* ===== Усиленная защита интерфейса ===== */
+function isProtectedTarget(target) {
+  return !!target.closest('.map-card, .map-dialog, .viewer-stage');
+}
+
+['contextmenu', 'dragstart', 'selectstart', 'copy', 'cut'].forEach(eventName => {
+  document.addEventListener(eventName, event => {
+    if (isProtectedTarget(event.target)) {
+      event.preventDefault();
+    }
+  });
+});
+
+document.addEventListener('keydown', event => {
+  const key = event.key.toLowerCase();
+
+  const blocked =
+    key === 'f12' ||
+    (event.ctrlKey && ['s', 'u', 'p', 'c'].includes(key)) ||
+    (event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key));
+
+  if (blocked) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+});
+
+const viewerShield = document.querySelector('.viewer-shield');
+
+if (viewerShield) {
+  ['contextmenu', 'dragstart', 'mousedown'].forEach(eventName => {
+    viewerShield.addEventListener(eventName, event => {
+      event.preventDefault();
+    });
+  });
+}
