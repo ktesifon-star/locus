@@ -534,3 +534,66 @@ h2 {
 }
 
 .hero-copy-secondary { margin-top: 10px; }
+
+
+/* ===== Усиленная защита интерфейса ===== */
+.map-card img,
+#viewerImage {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.viewer-stage {
+  position: relative;
+}
+
+#viewerImage {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.viewer-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+}
+
+.viewer-watermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: clamp(1.4rem, 3.4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 234, 0.16);
+  text-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+
+.map-card-button,
+.viewer-stage,
+.map-dialog {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 680px) {
+  .viewer-watermark {
+    font-size: clamp(1rem, 4.6vw, 1.5rem);
+    opacity: 1;
+    width: 90%;
+    text-align: center;
+    line-height: 1.35;
+    white-space: normal;
+  }
+}
