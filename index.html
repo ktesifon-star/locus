@@ -68,22 +68,23 @@
           <a class="button button-secondary" href="#contact">Заказать карту</a>
         </div>
         <dl class="hero-stats" aria-label="Статистика коллекции">
-          <div><dt id="mapCount">8</dt><dd>карт в каталоге</dd></div>
-          <div><dt id="regionCount">6</dt><dd>регионов представлены</dd></div>
+          <div><dt id="mapCount">9</dt><dd>карт в каталоге</dd></div>
+          <div><dt id="regionCount">7</dt><dd>регионов представлены</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="catalog-section" id="catalog">
       <div class="section-heading">
-        <p class="eyebrow">Каталог</p>
+        <h2 class="sr-only">Каталог карт</h2>
+        <p class="eyebrow" aria-hidden="true">Каталог</p>
       </div>
 
       <div class="catalog-toolbar">
         <div class="filter-tabs" role="group" aria-label="Фильтр карт">
-          <button class="filter-tab active" data-filter="all" type="button">Все</button>
-          <button class="filter-tab" data-filter="district" type="button">Районы</button>
-          <button class="filter-tab" data-filter="region" type="button">Области</button>
+          <button class="filter-tab active" data-filter="all" type="button" aria-pressed="true" aria-controls="mapGrid">Все</button>
+          <button class="filter-tab" data-filter="district" type="button" aria-pressed="false" aria-controls="mapGrid">Районы</button>
+          <button class="filter-tab" data-filter="region" type="button" aria-pressed="false" aria-controls="mapGrid">Области</button>
         </div>
       </div>
 
