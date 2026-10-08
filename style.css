@@ -442,6 +442,11 @@ h2 {
 .related-back-button:hover {
   background: rgba(255,255,255,.10);
 }
+.related-map-button.active {
+  border-color: rgba(199,221,216,.42);
+  background: rgba(199,221,216,.12);
+  box-shadow: inset 0 0 0 1px rgba(199,221,216,.08);
+}
 .related-map-button img {
   display: block;
   width: 72px;
