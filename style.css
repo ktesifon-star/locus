@@ -380,7 +380,7 @@ h2 {
 .map-dialog::backdrop { background: rgba(0,0,0,.88); }
 .viewer-shell { position: relative; display: grid; grid-template-rows: auto auto 1fr auto; height: 100%; }
 .related-maps {
-  padding: 10px 18px 12px;
+  padding: 6px 14px 7px;
   border-bottom: 1px solid rgba(255,255,255,.10);
   background: #141b19;
 }
@@ -389,19 +389,19 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 .related-maps-title {
   color: rgba(255,255,255,.56);
-  font-size: .68rem;
+  font-size: .62rem;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
 .related-maps-list {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -415,11 +415,11 @@ h2 {
 }
 .related-map-button {
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 54px minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
-  min-width: 230px;
-  padding: 6px;
+  gap: 8px;
+  min-width: 190px;
+  padding: 4px;
   text-align: left;
 }
 .related-map-button:hover,
@@ -433,21 +433,21 @@ h2 {
 }
 .related-map-button img {
   display: block;
-  width: 72px;
-  height: 48px;
+  width: 54px;
+  height: 36px;
   object-fit: cover;
   border-radius: 7px;
   -webkit-user-drag: none;
   user-select: none;
 }
 .related-map-button span {
-  font-size: .78rem;
+  font-size: .72rem;
   font-weight: 700;
   line-height: 1.2;
 }
 .related-back-button {
-  min-height: 34px;
-  padding: 0 12px;
+  min-height: 30px;
+  padding: 0 10px;
   font-size: .72rem;
   font-weight: 800;
 }
@@ -457,8 +457,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 12px 18px;
+  gap: 16px;
+  padding: 8px 14px;
   border-bottom: 1px solid rgba(255,255,255,.12);
   background: #141b19;
 }
@@ -467,8 +467,8 @@ h2 {
 #dialogTitle { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .viewer-controls { display: flex; gap: 6px; }
 .viewer-controls button {
-  min-width: 42px;
-  height: 40px;
+  min-width: 36px;
+  height: 34px;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 10px;
   color: #fff;
@@ -571,14 +571,17 @@ h2 {
   .contact-card { padding: 20px 22px; border-radius: 16px; }
   .site-footer { flex-direction: column; gap: 8px; }
   .viewer-toolbar { align-items: flex-start; }
-  .related-maps { padding: 8px 10px 10px; }
-  .related-maps-head { margin-bottom: 6px; }
+  .viewer-toolbar { padding: 6px 10px; }
+  .related-maps { padding: 5px 8px 6px; }
+  .related-maps-head { margin-bottom: 4px; }
   .related-map-button {
-    grid-template-columns: 60px minmax(0, 1fr);
-    min-width: 200px;
+    grid-template-columns: 50px minmax(0, 1fr);
+    min-width: 170px;
+    gap: 7px;
+    padding: 3px;
   }
-  .related-map-button img { width: 60px; height: 42px; }
-  .related-map-button span { font-size: .72rem; }
+  .related-map-button img { width: 50px; height: 34px; }
+  .related-map-button span { font-size: .68rem; }
   .viewer-title-block { display: none; }
   .viewer-controls { width: 100%; justify-content: flex-end; }
   .viewer-stage { padding: 10px; justify-content: flex-start; align-items: flex-start; }
