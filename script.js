@@ -46,12 +46,16 @@ const minZoom = 1;
 const maxZoom = 5;
 const zoomStep = .2;
 
+function sortMapsByTitle(items) {
+  return [...items].sort((a, b) => a.title.localeCompare(b.title, 'ru', { sensitivity: 'base' }));
+}
+
 function getRegionMap(regionName) {
   return maps.find(map => map.type === 'region' && map.title === regionName);
 }
 
 function getDistrictsForRegion(regionName) {
-  return maps.filter(map => map.type === 'district' && map.region === regionName);
+  return sortMapsByTitle(maps.filter(map => map.type === 'district' && map.region === regionName));
 }
 
 function renderMaps() {
@@ -65,6 +69,8 @@ function renderMaps() {
   } else {
     filtered = maps.filter(map => map.type === activeFilter);
   }
+
+  filtered = sortMapsByTitle(filtered);
 
   grid.innerHTML = filtered.map(map => `
     <article class="map-card">
