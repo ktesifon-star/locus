@@ -21,6 +21,10 @@ const dialogTitle = document.getElementById('dialogTitle');
 const dialogRegion = document.getElementById('dialogRegion');
 const zoomValue = document.getElementById('zoomValue');
 const viewerShell = dialog.querySelector('.viewer-shell');
+const relatedMaps = document.getElementById('relatedMaps');
+const relatedMapsTitle = document.getElementById('relatedMapsTitle');
+const relatedMapsList = document.getElementById('relatedMapsList');
+const relatedBackButton = document.getElementById('relatedBackButton');
 
 const passport = document.createElement('dl');
 passport.className = 'map-passport';
@@ -42,10 +46,25 @@ const minZoom = 1;
 const maxZoom = 5;
 const zoomStep = .2;
 
+function getRegionMap(regionName) {
+  return maps.find(map => map.type === 'region' && map.title === regionName);
+}
+
+function getDistrictsForRegion(regionName) {
+  return maps.filter(map => map.type === 'district' && map.region === regionName);
+}
+
 function renderMaps() {
-  const filtered = activeFilter === 'all'
-    ? maps
-    : maps.filter(map => map.type === activeFilter);
+  let filtered;
+
+  if (activeFilter === 'all') {
+    filtered = maps.filter(map => {
+      if (map.type === 'region') return true;
+      return !getRegionMap(map.region);
+    });
+  } else {
+    filtered = maps.filter(map => map.type === activeFilter);
+  }
 
   grid.innerHTML = filtered.map(map => `
     <article class="map-card">
@@ -63,7 +82,6 @@ function renderMaps() {
 
   emptyState.hidden = filtered.length !== 0;
 }
-
 function updateStats() {
   document.getElementById('mapCount').textContent = maps.length;
   document.getElementById('regionCount').textContent = new Set(maps.map(map => map.region)).size;
@@ -82,24 +100,66 @@ function setZoom(nextZoom) {
   zoomValue.textContent = `${Math.round(zoom * 100)}%`;
 }
 
-function openMap(button) {
-  viewerImage.src = button.dataset.src;
-  viewerImage.alt = button.dataset.title;
-  dialogTitle.textContent = button.dataset.title;
-  const sameName = button.dataset.title === button.dataset.region;
-  dialogRegion.hidden = sameName;
-  dialogRegion.textContent = sameName ? '' : button.dataset.region;
+function renderRelatedMaps(map) {
+  const regionMap = map.type === 'region' ? map : getRegionMap(map.region);
+  const districts = regionMap ? getDistrictsForRegion(regionMap.title) : [];
 
-  const map = maps.find(item => item.src === button.dataset.src);
-  passportYear.textContent = map?.year || '—';
-  passportProjection.textContent = map?.projection || '—';
-  passportDem.textContent = map?.dem || '—';
+  if (!regionMap || districts.length === 0) {
+    relatedMaps.hidden = true;
+    relatedMapsList.innerHTML = '';
+    relatedBackButton.hidden = true;
+    relatedBackButton.removeAttribute('data-src');
+    return;
+  }
 
-  resetZoom();
-  dialog.showModal();
-  document.body.style.overflow = 'hidden';
+  relatedMapsTitle.textContent = 'Карты районов области';
+  relatedMapsList.innerHTML = districts.map(district => `
+    <button class="related-map-button${district.src === map.src ? ' active' : ''}" type="button" data-related-src="${district.src}" aria-label="Открыть карту: ${district.title}">
+      <img src="${district.src}" alt="" loading="lazy" decoding="async" draggable="false">
+      <span>${district.title}</span>
+    </button>
+  `).join('');
+
+  if (map.type === 'district') {
+    relatedBackButton.hidden = false;
+    relatedBackButton.textContent = `← ${regionMap.title}`;
+    relatedBackButton.dataset.src = regionMap.src;
+  } else {
+    relatedBackButton.hidden = true;
+    relatedBackButton.removeAttribute('data-src');
+  }
+
+  relatedMaps.hidden = false;
 }
 
+function displayMap(map, openDialog = false) {
+  if (!map) return;
+
+  viewerImage.src = map.src;
+  viewerImage.alt = map.title;
+  dialogTitle.textContent = map.title;
+
+  const sameName = map.title === map.region;
+  dialogRegion.hidden = sameName;
+  dialogRegion.textContent = sameName ? '' : map.region;
+
+  passportYear.textContent = map.year || '—';
+  passportProjection.textContent = map.projection || '—';
+  passportDem.textContent = map.dem || '—';
+
+  renderRelatedMaps(map);
+  resetZoom();
+
+  if (openDialog && !dialog.open) {
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function openMap(button) {
+  const map = maps.find(item => item.src === button.dataset.src);
+  displayMap(map, true);
+}
 function closeMap() {
   dialog.close();
   viewerImage.removeAttribute('src');
@@ -109,6 +169,19 @@ function closeMap() {
 grid.addEventListener('click', event => {
   const button = event.target.closest('.map-card-button');
   if (button) openMap(button);
+});
+
+relatedMapsList.addEventListener('click', event => {
+  const button = event.target.closest('.related-map-button');
+  if (!button) return;
+
+  const map = maps.find(item => item.src === button.dataset.relatedSrc);
+  displayMap(map);
+});
+
+relatedBackButton.addEventListener('click', () => {
+  const map = maps.find(item => item.src === relatedBackButton.dataset.src);
+  displayMap(map);
 });
 
 filterTabs.forEach(tab => {
