@@ -1,13 +1,13 @@
 const maps = [
-  { id: 'akmola', src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { id: 'west-kazakhstan', src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
-  { id: 'atyrau', src: 'images/map9.png', title: 'Атырауская область', region: 'Атырауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
-  { id: 'kostanay', src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
-  { id: 'pavlodar', src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
-  { id: 'north-kazakhstan', src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { id: 'g-musrepov', src: 'images/map2.png', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { id: 'aiyrtau', src: 'images/map8.png', title: 'Айыртауский район', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { id: 'sozak', src: 'images/map5.png', title: 'Сузакский район', region: 'Туркестанская область', parentRegionId: 'turkistan', type: 'district', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
+  { id: 'akmola', src: 'images/maps/map6.jpg', thumb: 'images/thumbs/map6.webp', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'west-kazakhstan', src: 'images/maps/map7.jpg', thumb: 'images/thumbs/map7.webp', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { id: 'atyrau', src: 'images/maps/map9.jpg', thumb: 'images/thumbs/map9.webp', title: 'Атырауская область', region: 'Атырауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { id: 'kostanay', src: 'images/maps/map1.jpg', thumb: 'images/thumbs/map1.webp', title: 'Костанайская область', region: 'Костанайская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
+  { id: 'pavlodar', src: 'images/maps/map4.jpg', thumb: 'images/thumbs/map4.webp', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
+  { id: 'north-kazakhstan', src: 'images/maps/map3.jpg', thumb: 'images/thumbs/map3.webp', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'g-musrepov', src: 'images/maps/map2.jpg', thumb: 'images/thumbs/map2.webp', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'aiyrtau', src: 'images/maps/map8.jpg', thumb: 'images/thumbs/map8.webp', title: 'Айыртауский район', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'sozak', src: 'images/maps/map5.jpg', thumb: 'images/thumbs/map5.webp', title: 'Сузакский район', region: 'Туркестанская область', parentRegionId: 'turkistan', type: 'district', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
 ];
 
 const grid = document.getElementById('mapGrid');
@@ -83,7 +83,7 @@ function renderMaps() {
     <article class="map-card">
       <button class="map-card-button" type="button" data-map-id="${map.id}" aria-label="Открыть карту: ${map.title}">
         <span class="map-thumb">
-          <img src="${map.src}" alt="${map.title}" loading="lazy" decoding="async" draggable="false">
+          <img src="${map.thumb}" alt="${map.title}" loading="lazy" decoding="async" draggable="false">
         </span>
         <span class="map-type-badge">${map.type === 'region' ? 'Область' : 'Район'}</span>
         <span class="map-label">
@@ -139,7 +139,7 @@ function renderRelatedMaps(map) {
       aria-label="Открыть карту: ${district.title}"
       aria-current="${district.id === map.id ? 'true' : 'false'}"
     >
-      <img src="${district.src}" alt="" loading="lazy" decoding="async" draggable="false">
+      <img src="${district.thumb}" alt="" loading="lazy" decoding="async" draggable="false">
       <span>${district.title}</span>
     </button>
   `).join('');
