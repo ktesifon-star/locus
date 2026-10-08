@@ -1,15 +1,14 @@
 const maps = [
-  { src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map9.png', title: 'Атырауская область', region: 'Атырауская область', type: 'region', typeLabel: 'Карта области', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', typeLabel: 'Карта области', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map2.png', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map8.png', title: 'Айыртауский район', region: 'Северо-Казахстанская область', type: 'district', typeLabel: 'Карта района', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
-  { src: 'images/map5.png', title: 'Сузакский район', region: 'Туркестанская область', type: 'district', typeLabel: 'Карта района', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
+  { id: 'akmola', src: 'images/map6.png', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'west-kazakhstan', src: 'images/map7.png', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { id: 'atyrau', src: 'images/map9.png', title: 'Атырауская область', region: 'Атырауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
+  { id: 'kostanay', src: 'images/map1.png', title: 'Костанайская область', region: 'Костанайская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 41N', dem: 'Copernicus GLO-30' },
+  { id: 'pavlodar', src: 'images/map4.png', title: 'Павлодарская область', region: 'Павлодарская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 43N', dem: 'Copernicus GLO-30' },
+  { id: 'north-kazakhstan', src: 'images/map3.png', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'g-musrepov', src: 'images/map2.png', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'aiyrtau', src: 'images/map8.png', title: 'Айыртауский район', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'sozak', src: 'images/map5.png', title: 'Сузакский район', region: 'Туркестанская область', parentRegionId: 'turkistan', type: 'district', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
 ];
-
 
 const grid = document.getElementById('mapGrid');
 const emptyState = document.getElementById('emptyState');
@@ -40,22 +39,30 @@ const passportYear = document.getElementById('passportYear');
 const passportProjection = document.getElementById('passportProjection');
 const passportDem = document.getElementById('passportDem');
 
+const mapCollator = new Intl.Collator('ru', { sensitivity: 'base' });
+
 let activeFilter = 'all';
 let zoom = 1;
 const minZoom = 1;
 const maxZoom = 5;
 const zoomStep = .2;
 
+function getMapById(mapId) {
+  return maps.find(map => map.id === mapId);
+}
+
 function sortMapsByTitle(items) {
-  return [...items].sort((a, b) => a.title.localeCompare(b.title, 'ru', { sensitivity: 'base' }));
+  return [...items].sort((a, b) => mapCollator.compare(a.title, b.title));
 }
 
-function getRegionMap(regionName) {
-  return maps.find(map => map.type === 'region' && map.title === regionName);
+function getRegionMap(regionId) {
+  return maps.find(map => map.type === 'region' && map.id === regionId);
 }
 
-function getDistrictsForRegion(regionName) {
-  return sortMapsByTitle(maps.filter(map => map.type === 'district' && map.region === regionName));
+function getDistrictsForRegion(regionId) {
+  return sortMapsByTitle(
+    maps.filter(map => map.type === 'district' && map.parentRegionId === regionId)
+  );
 }
 
 function renderMaps() {
@@ -64,7 +71,7 @@ function renderMaps() {
   if (activeFilter === 'all') {
     filtered = maps.filter(map => {
       if (map.type === 'region') return true;
-      return !getRegionMap(map.region);
+      return !getRegionMap(map.parentRegionId);
     });
   } else {
     filtered = maps.filter(map => map.type === activeFilter);
@@ -74,9 +81,9 @@ function renderMaps() {
 
   grid.innerHTML = filtered.map(map => `
     <article class="map-card">
-      <button class="map-card-button" type="button" data-src="${map.src}" data-title="${map.title}" data-region="${map.region}" aria-label="Открыть карту: ${map.title}">
+      <button class="map-card-button" type="button" data-map-id="${map.id}" aria-label="Открыть карту: ${map.title}">
         <span class="map-thumb">
-          <img src="${map.src}" alt="${map.title}" loading="lazy" decoding="async">
+          <img src="${map.src}" alt="${map.title}" loading="lazy" decoding="async" draggable="false">
         </span>
         <span class="map-type-badge">${map.type === 'region' ? 'Область' : 'Район'}</span>
         <span class="map-label">
@@ -88,9 +95,14 @@ function renderMaps() {
 
   emptyState.hidden = filtered.length !== 0;
 }
+
 function updateStats() {
+  const representedRegions = new Set(
+    maps.map(map => map.type === 'region' ? map.id : map.parentRegionId)
+  );
+
   document.getElementById('mapCount').textContent = maps.length;
-  document.getElementById('regionCount').textContent = new Set(maps.map(map => map.region)).size;
+  document.getElementById('regionCount').textContent = representedRegions.size;
 }
 
 function resetZoom() {
@@ -107,20 +119,26 @@ function setZoom(nextZoom) {
 }
 
 function renderRelatedMaps(map) {
-  const regionMap = map.type === 'region' ? map : getRegionMap(map.region);
-  const districts = regionMap ? getDistrictsForRegion(regionMap.title) : [];
+  const regionMap = map.type === 'region' ? map : getRegionMap(map.parentRegionId);
+  const districts = regionMap ? getDistrictsForRegion(regionMap.id) : [];
 
   if (!regionMap || districts.length === 0) {
     relatedMaps.hidden = true;
     relatedMapsList.innerHTML = '';
     relatedBackButton.hidden = true;
-    relatedBackButton.removeAttribute('data-src');
+    relatedBackButton.removeAttribute('data-map-id');
     return;
   }
 
   relatedMapsTitle.textContent = 'Карты районов области';
   relatedMapsList.innerHTML = districts.map(district => `
-    <button class="related-map-button${district.src === map.src ? ' active' : ''}" type="button" data-related-src="${district.src}" aria-label="Открыть карту: ${district.title}">
+    <button
+      class="related-map-button${district.id === map.id ? ' active' : ''}"
+      type="button"
+      data-map-id="${district.id}"
+      aria-label="Открыть карту: ${district.title}"
+      aria-current="${district.id === map.id ? 'true' : 'false'}"
+    >
       <img src="${district.src}" alt="" loading="lazy" decoding="async" draggable="false">
       <span>${district.title}</span>
     </button>
@@ -129,10 +147,10 @@ function renderRelatedMaps(map) {
   if (map.type === 'district') {
     relatedBackButton.hidden = false;
     relatedBackButton.textContent = `← ${regionMap.title}`;
-    relatedBackButton.dataset.src = regionMap.src;
+    relatedBackButton.dataset.mapId = regionMap.id;
   } else {
     relatedBackButton.hidden = true;
-    relatedBackButton.removeAttribute('data-src');
+    relatedBackButton.removeAttribute('data-map-id');
   }
 
   relatedMaps.hidden = false;
@@ -163,11 +181,11 @@ function displayMap(map, openDialog = false) {
 }
 
 function openMap(button) {
-  const map = maps.find(item => item.src === button.dataset.src);
-  displayMap(map, true);
+  displayMap(getMapById(button.dataset.mapId), true);
 }
+
 function closeMap() {
-  dialog.close();
+  if (dialog.open) dialog.close();
   viewerImage.removeAttribute('src');
   document.body.style.overflow = '';
 }
@@ -179,21 +197,21 @@ grid.addEventListener('click', event => {
 
 relatedMapsList.addEventListener('click', event => {
   const button = event.target.closest('.related-map-button');
-  if (!button) return;
-
-  const map = maps.find(item => item.src === button.dataset.relatedSrc);
-  displayMap(map);
+  if (button) displayMap(getMapById(button.dataset.mapId));
 });
 
 relatedBackButton.addEventListener('click', () => {
-  const map = maps.find(item => item.src === relatedBackButton.dataset.src);
-  displayMap(map);
+  displayMap(getMapById(relatedBackButton.dataset.mapId));
 });
 
 filterTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    filterTabs.forEach(item => item.classList.remove('active'));
-    tab.classList.add('active');
+    filterTabs.forEach(item => {
+      const isActive = item === tab;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
+
     activeFilter = tab.dataset.filter;
     renderMaps();
   });
@@ -213,6 +231,11 @@ dialog.addEventListener('click', event => {
   if (event.target === dialog) closeMap();
 });
 
+dialog.addEventListener('cancel', event => {
+  event.preventDefault();
+  closeMap();
+});
+
 viewerStage.addEventListener('wheel', event => {
   if (!dialog.open) return;
   event.preventDefault();
@@ -220,19 +243,16 @@ viewerStage.addEventListener('wheel', event => {
 }, { passive: false });
 
 dialog.addEventListener('close', () => {
+  viewerImage.removeAttribute('src');
   document.body.style.overflow = '';
 });
-
-viewerImage.addEventListener('contextmenu', event => event.preventDefault());
-viewerImage.addEventListener('dragstart', event => event.preventDefault());
 
 updateStats();
 renderMaps();
 
-
-/* ===== Усиленная защита интерфейса ===== */
+/* ===== Защита интерфейса карт ===== */
 function isProtectedTarget(target) {
-  return !!target.closest('.map-card, .map-dialog, .viewer-stage');
+  return target instanceof Element && !!target.closest('.map-card, .map-dialog, .viewer-stage');
 }
 
 ['contextmenu', 'dragstart', 'selectstart', 'copy', 'cut'].forEach(eventName => {
@@ -242,27 +262,3 @@ function isProtectedTarget(target) {
     }
   });
 });
-
-document.addEventListener('keydown', event => {
-  const key = event.key.toLowerCase();
-
-  const blocked =
-    key === 'f12' ||
-    (event.ctrlKey && ['s', 'u', 'p', 'c'].includes(key)) ||
-    (event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key));
-
-  if (blocked) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-});
-
-const viewerShield = document.querySelector('.viewer-shield');
-
-if (viewerShield) {
-  ['contextmenu', 'dragstart', 'mousedown'].forEach(eventName => {
-    viewerShield.addEventListener(eventName, event => {
-      event.preventDefault();
-    });
-  });
-}
