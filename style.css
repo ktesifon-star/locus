@@ -9,8 +9,8 @@
   --line: rgba(23, 32, 31, 0.14);
   --white: #fff;
   --shadow: 0 20px 55px rgba(18, 35, 33, 0.13);
-  --font-primary: "Frutiger", "Frutiger LT Std", "Segoe UI", Arial, sans-serif;
-  --font-secondary: "Avenir Next", "Avenir", "Segoe UI", Arial, sans-serif;
+  --font-primary: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-secondary: "Manrope", "Segoe UI", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
