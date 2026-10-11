@@ -9,8 +9,8 @@
   --line: rgba(23, 32, 31, 0.14);
   --white: #fff;
   --shadow: 0 20px 55px rgba(18, 35, 33, 0.13);
-  --font-primary: "Source Sans 3", "Segoe UI", Arial, sans-serif;
-  --font-secondary: "Manrope", "Segoe UI", Arial, sans-serif;
+  --font-primary: "Forum", Georgia, "Times New Roman", serif;
+  --font-secondary: "Golos Text", "Segoe UI", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -135,8 +135,8 @@ h1 {
   font-family: var(--font-primary);
   font-size: clamp(2.8rem, 5.8vw, 6rem);
   font-weight: 400;
-  letter-spacing: -.045em;
-  line-height: .94;
+  letter-spacing: .005em;
+  line-height: .98;
   text-align: center;
   white-space: nowrap;
 }
@@ -186,8 +186,8 @@ h2 {
   font-family: var(--font-primary);
   font-size: clamp(2.2rem, 4vw, 4rem);
   font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1;
+  letter-spacing: .01em;
+  line-height: 1.02;
 }
 .section-heading > p { margin: 0; color: var(--muted); }
 
