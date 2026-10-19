@@ -29,6 +29,15 @@
   <meta name="twitter:description" content="Авторские карты рельефа Казахстана: области и районы в цифровой картографии LOCUS.">
   <meta name="twitter:image" content="https://ktesifon-star.github.io/locus/images/logo2.jpg">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKLX1PYH2C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LKLX1PYH2C');
+  </script>
+
   <title>LOCUS — цифровая картография Казахстана</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,8 +76,8 @@
         <p class="hero-copy">LOCUS — авторский картографический проект, в котором пластика земной поверхности становится главным образом территории. Рельеф, формы местности и высотные различия формируют картографический образ.</p>
         <p class="hero-copy hero-copy-secondary">Административные границы, населённые пункты, дороги и гидрография служат пространственным контекстом, связывая природную структуру местности с привычной географией областей и районов Казахстана.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#catalog">Смотреть карты</a>
-          <a class="button button-secondary" href="#contact">Заказать карту</a>
+          <a class="button button-primary" href="#catalog" data-analytics="catalog-intent">Смотреть карты</a>
+          <a class="button button-secondary" href="#contact" data-analytics="order-intent">Заказать карту</a>
         </div>
         <dl class="hero-stats" aria-label="Статистика коллекции">
           <div><dt id="mapCount">9</dt><dd>карт в каталоге</dd></div>
