@@ -41,6 +41,11 @@ const passportDem = document.getElementById('passportDem');
 
 const mapCollator = new Intl.Collator('ru', { sensitivity: 'base' });
 
+function trackEvent(eventName, parameters = {}) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, parameters);
+}
+
 let activeFilter = 'all';
 let zoom = 1;
 const minZoom = 1;
@@ -156,7 +161,7 @@ function renderRelatedMaps(map) {
   relatedMaps.hidden = false;
 }
 
-function displayMap(map, openDialog = false) {
+function displayMap(map, openDialog = false, source = 'viewer') {
   if (!map) return;
 
   viewerImage.src = map.src;
@@ -174,6 +179,14 @@ function displayMap(map, openDialog = false) {
   renderRelatedMaps(map);
   resetZoom();
 
+  trackEvent('view_map', {
+    map_id: map.id,
+    map_title: map.title,
+    map_type: map.type,
+    region: map.region,
+    navigation_source: source
+  });
+
   if (openDialog && !dialog.open) {
     dialog.showModal();
     document.body.style.overflow = 'hidden';
@@ -181,7 +194,7 @@ function displayMap(map, openDialog = false) {
 }
 
 function openMap(button) {
-  displayMap(getMapById(button.dataset.mapId), true);
+  displayMap(getMapById(button.dataset.mapId), true, 'catalog');
 }
 
 function closeMap() {
@@ -197,11 +210,11 @@ grid.addEventListener('click', event => {
 
 relatedMapsList.addEventListener('click', event => {
   const button = event.target.closest('.related-map-button');
-  if (button) displayMap(getMapById(button.dataset.mapId));
+  if (button) displayMap(getMapById(button.dataset.mapId), false, 'related_district');
 });
 
 relatedBackButton.addEventListener('click', () => {
-  displayMap(getMapById(relatedBackButton.dataset.mapId));
+  displayMap(getMapById(relatedBackButton.dataset.mapId), false, 'region_back');
 });
 
 filterTabs.forEach(tab => {
@@ -213,6 +226,9 @@ filterTabs.forEach(tab => {
     });
 
     activeFilter = tab.dataset.filter;
+    trackEvent('select_map_filter', {
+      filter: activeFilter
+    });
     renderMaps();
   });
 });
@@ -245,6 +261,18 @@ viewerStage.addEventListener('wheel', event => {
 dialog.addEventListener('close', () => {
   viewerImage.removeAttribute('src');
   document.body.style.overflow = '';
+});
+
+document.querySelectorAll('[data-analytics]').forEach(link => {
+  link.addEventListener('click', () => {
+    const intent = link.dataset.analytics;
+    if (intent === 'catalog-intent') {
+      trackEvent('catalog_intent');
+    }
+    if (intent === 'order-intent') {
+      trackEvent('order_intent');
+    }
+  });
 });
 
 updateStats();
