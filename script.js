@@ -275,6 +275,15 @@ document.querySelectorAll('[data-analytics]').forEach(link => {
   });
 });
 
+document.querySelectorAll('[data-social]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackEvent('social_click', {
+      platform: link.dataset.social,
+      link_url: link.href
+    });
+  });
+});
+
 updateStats();
 renderMaps();
 
