@@ -7,6 +7,7 @@ const maps = [
   { id: 'north-kazakhstan', src: 'images/maps/map3.jpg', thumb: 'images/thumbs/map3.jpg', title: 'Северо-Казахстанская область', region: 'Северо-Казахстанская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { id: 'g-musrepov', src: 'images/maps/map2.jpg', thumb: 'images/thumbs/map2.jpg', title: 'Район имени Г. Мусрепова', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { id: 'aiyrtau', src: 'images/maps/map8.jpg', thumb: 'images/thumbs/map8.jpg', title: 'Айыртауский район', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
+  { id: 'shal-akyn', src: 'images/maps/map10.jpg', thumb: 'images/thumbs/map10.jpg', title: 'Район Шал акына', region: 'Северо-Казахстанская область', parentRegionId: 'north-kazakhstan', type: 'district', year: '2026', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { id: 'sozak', src: 'images/maps/map5.jpg', thumb: 'images/thumbs/map5.jpg', title: 'Сузакский район', region: 'Туркестанская область', parentRegionId: 'turkistan', type: 'district', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' }
 ];
 
