@@ -376,6 +376,14 @@ h2 {
   text-align: left;
   cursor: pointer;
 }
+/* Вертикальная карта Мангистау: книжная карточка и превью без обрезки. */
+.map-card--portrait .map-card-button {
+  aspect-ratio: 3 / 4;
+}
+.map-card--portrait .map-thumb img {
+  object-fit: contain;
+}
+
 .map-thumb {
   position: absolute;
   inset: 0;
