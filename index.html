@@ -57,100 +57,106 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="header-social" aria-label="Социальные сети">
-      <a class="social-link" href="https://www.instagram.com/locusmapsvector/?hl=ru" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Instagram" title="Instagram" data-social="instagram">
+    <nav class="header-social" aria-label="Социальные сети" data-i18n-aria="socialNav">
+      <a class="social-link" href="https://www.instagram.com/locusmapsvector/?hl=ru" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Instagram" data-i18n-aria="instagram" title="Instagram" data-social="instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
           <circle cx="12" cy="12" r="4"></circle>
           <circle cx="17.5" cy="6.5" r="1" class="social-fill"></circle>
         </svg>
       </a>
-      <a class="social-link" href="https://www.facebook.com/LocusMapsVector" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Facebook" title="Facebook" data-social="facebook">
+      <a class="social-link" href="https://www.facebook.com/LocusMapsVector" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Facebook" data-i18n-aria="facebook" title="Facebook" data-social="facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M13.7 20v-7h2.45l.37-2.86H13.7V8.31c0-.83.23-1.39 1.42-1.39h1.52V4.37c-.26-.04-1.16-.11-2.21-.11-2.19 0-3.69 1.34-3.69 3.79v2.09H8.26V13h2.48v7h2.96Z" class="social-fill"></path>
         </svg>
       </a>
-      <a class="social-link" href="https://www.threads.com/@locusmapsvector" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Threads" title="Threads" data-social="threads">
+      <a class="social-link" href="https://www.threads.com/@locusmapsvector" target="_blank" rel="noopener noreferrer" aria-label="LOCUS в Threads" data-i18n-aria="threads" title="Threads" data-social="threads">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M17.8 10.2C17.45 6.9 15.4 5 12 5c-4.05 0-6.5 2.7-6.5 7s2.45 7 6.5 7c3.5 0 5.7-1.85 5.7-4.65 0-2.45-1.85-3.95-4.75-3.95-2.35 0-4.05 1.05-4.05 2.65 0 1.45 1.15 2.4 2.95 2.4 2.5 0 4.15-1.9 4.15-4.85"></path>
         </svg>
       </a>
     </nav>
-    <a class="brand" href="#top" aria-label="LOCUS — на главную">
-      <span class="brand-kicker">Цифровая</span>
+    <a class="brand" href="#top" aria-label="LOCUS — на главную" data-i18n-aria="goHome">
+      <span class="brand-kicker" data-i18n="brandDigital">Цифровая</span>
       <span class="brand-logo-wrap"><img src="images/logo.png" alt="LOCUS" class="brand-logo"></span>
-      <span class="brand-kicker">Картография</span>
+      <span class="brand-kicker" data-i18n="brandCartography">Картография</span>
     </a>
-    <nav class="header-nav" aria-label="Основная навигация">
-      <a href="#catalog">Каталог</a>
-      <a href="#contact">Контакты</a>
-    </nav>
+    <div class="header-tools">
+      <nav class="header-nav" aria-label="Основная навигация" data-i18n-aria="mainNav">
+        <a href="#catalog" data-i18n="navCatalog">Каталог</a>
+        <a href="#contact" data-i18n="navContacts">Контакты</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Язык сайта" data-i18n-aria="languageControl">
+        <button class="language-button" type="button" data-lang="kk" lang="kk" aria-pressed="false" aria-label="Қазақша">ҚАЗ</button>
+        <button class="language-button active" type="button" data-lang="ru" lang="ru" aria-pressed="true" aria-label="Русский">РУС</button>
+      </div>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-inner">
-        <p class="eyebrow">Цифровая картография Казахстана</p>
-        <h1>Рельеф как образ территории</h1>
-        <p class="hero-copy">LOCUS — авторские карты рельефа Казахстана. Они показывают формы поверхности и перепады высот, дополняя их границами, населёнными пунктами, дорогами и гидрографией.</p>
+        <p class="eyebrow" data-i18n="heroKicker">Цифровая картография Казахстана</p>
+        <h1 data-i18n="heroTitle">Рельеф как образ территории</h1>
+        <p class="hero-copy" data-i18n="heroDescription">LOCUS — авторские карты рельефа Казахстана. Они показывают формы поверхности и перепады высот, дополняя их границами, населёнными пунктами, дорогами и гидрографией.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#catalog" data-analytics="catalog-intent">Смотреть карты</a>
-          <a class="button button-secondary" href="#contact" data-analytics="order-intent">Заказать карту</a>
+          <a class="button button-primary" href="#catalog" data-analytics="catalog-intent" data-i18n="viewMaps">Смотреть карты</a>
+          <a class="button button-secondary" href="#contact" data-analytics="order-intent" data-i18n="orderMap">Заказать карту</a>
         </div>
-        <dl class="hero-stats" aria-label="Статистика коллекции">
-          <div><dt id="mapCount">10</dt><dd>карт в каталоге</dd></div>
-          <div><dt id="regionCount">7</dt><dd>регионов представлены</dd></div>
+        <dl class="hero-stats" aria-label="Статистика коллекции" data-i18n-aria="collectionStats">
+          <div><dt id="mapCount">10</dt><dd data-i18n="mapsInCatalog">карт в каталоге</dd></div>
+          <div><dt id="regionCount">7</dt><dd data-i18n="regionsRepresented">регионов представлены</dd></div>
         </dl>
       </div>
     </section>
 
 
-    <section class="support-section" aria-label="Поддержать LOCUS">
+    <section class="support-section" aria-label="Поддержать LOCUS" data-i18n-aria="supportSection">
       <div class="support-strip">
-        <p class="support-message">Если карты вам нравятся, вы можете поддержать дальнейшую работу над проектом.</p>
-        <a class="support-phone" href="tel:+77755516942" aria-label="Позвонить: +7 775 551 69 42">+7 775 551 69 42</a>
+        <p class="support-message" data-i18n="supportMessage">Если карты вам нравятся, вы можете поддержать дальнейшую работу над проектом.</p>
+        <a class="support-phone" href="tel:+77755516942" aria-label="Позвонить: +7 775 551 69 42" data-i18n-aria="callPhone">+7 775 551 69 42</a>
       </div>
     </section>
 
     <section class="catalog-section" id="catalog">
       <div class="section-heading">
-        <h2 class="sr-only">Каталог карт</h2>
-        <p class="eyebrow" aria-hidden="true">Каталог</p>
+        <h2 class="sr-only" data-i18n="catalogHeading">Каталог карт</h2>
+        <p class="eyebrow" aria-hidden="true" data-i18n="navCatalog">Каталог</p>
       </div>
 
       <div class="catalog-toolbar">
-        <div class="filter-tabs" role="group" aria-label="Фильтр карт">
-          <button class="filter-tab active" data-filter="all" type="button" aria-pressed="true" aria-controls="mapGrid">Все</button>
-          <button class="filter-tab" data-filter="district" type="button" aria-pressed="false" aria-controls="mapGrid">Районы</button>
-          <button class="filter-tab" data-filter="region" type="button" aria-pressed="false" aria-controls="mapGrid">Области</button>
+        <div class="filter-tabs" role="group" aria-label="Фильтр карт" data-i18n-aria="mapFilters">
+          <button class="filter-tab active" data-filter="all" type="button" aria-pressed="true" aria-controls="mapGrid" data-i18n="filterAll">Все</button>
+          <button class="filter-tab" data-filter="district" type="button" aria-pressed="false" aria-controls="mapGrid" data-i18n="filterDistricts">Районы</button>
+          <button class="filter-tab" data-filter="region" type="button" aria-pressed="false" aria-controls="mapGrid" data-i18n="filterRegions">Области</button>
         </div>
       </div>
 
       <div class="map-grid" id="mapGrid" aria-live="polite"></div>
-      <p class="empty-state" id="emptyState" hidden>По вашему запросу карты не найдены.</p>
+      <p class="empty-state" id="emptyState" hidden data-i18n="emptyCatalog">По вашему запросу карты не найдены.</p>
 
       <div class="catalog-note">
-        <p>По мере работы карты всех областей Казахстана появятся в каталоге.</p>
-        <p>Если вы хотите приобрести какую-либо из представленных карт или заказать другую — дайте знать! Я делаю цифровые карты. Если вам нужна бумажная карта или плакат — тоже дайте знать, и я посмотрю, что можно сделать.</p>
+        <p data-i18n="catalogFuture">По мере работы карты всех областей Казахстана появятся в каталоге.</p>
+        <p data-i18n="catalogOrderNote">Если вы хотите приобрести какую-либо из представленных карт или заказать другую — дайте знать! Я делаю цифровые карты. Если вам нужна бумажная карта или плакат — тоже дайте знать, и я посмотрю, что можно сделать.</p>
       </div>
     </section>
 
     <section class="contact-section" id="contact">
       <div class="contact-card">
         <div class="contact-intro">
-          <p class="eyebrow">Заказ и сотрудничество</p>
-          <h2>Нужна карта для вашего проекта?</h2>
+          <p class="eyebrow" data-i18n="contactKicker">Заказ и сотрудничество</p>
+          <h2 data-i18n="contactTitle">Нужна карта для вашего проекта?</h2>
         </div>
         <div class="contact-details">
-          <p>Телефон / WhatsApp: <span>87755516942</span></p>
-          <p>Почта: <span>ktesifon@yandex.ru</span></p>
+          <p><span data-i18n="contactPhone">Телефон / WhatsApp:</span> <span>87755516942</span></p>
+          <p><span data-i18n="contactEmail">Почта:</span> <span>ktesifon@yandex.ru</span></p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© 2026 LOCUS · Барлық құқықтар қорғалған · Все права защищены · All rights reserved.</p>
+    <p data-i18n="copyright">© 2026 LOCUS · Барлық құқықтар қорғалған · Все права защищены · All rights reserved.</p>
   </footer>
 
   <dialog class="map-dialog" id="mapDialog" aria-labelledby="dialogTitle">
@@ -161,15 +167,15 @@
           <strong id="dialogTitle"></strong>
         </div>
         <div class="viewer-controls">
-          <button type="button" data-action="zoom-out" aria-label="Уменьшить">−</button>
-          <button type="button" data-action="reset" aria-label="Масштаб 100%"><span id="zoomValue">100%</span></button>
-          <button type="button" data-action="zoom-in" aria-label="Увеличить">+</button>
-          <button class="viewer-close" type="button" data-action="close" aria-label="Закрыть">×</button>
+          <button type="button" data-action="zoom-out" aria-label="Уменьшить" data-i18n-aria="zoomOut">−</button>
+          <button type="button" data-action="reset" aria-label="Масштаб 100%" data-i18n-aria="resetZoom"><span id="zoomValue">100%</span></button>
+          <button type="button" data-action="zoom-in" aria-label="Увеличить" data-i18n-aria="zoomIn">+</button>
+          <button class="viewer-close" type="button" data-action="close" aria-label="Закрыть" data-i18n-aria="close">×</button>
         </div>
       </div>
-      <section class="related-maps" id="relatedMaps" aria-label="Связанные карты" hidden>
+      <section class="related-maps" id="relatedMaps" aria-label="Связанные карты" data-i18n-aria="relatedMaps" hidden>
         <div class="related-maps-head">
-          <span class="related-maps-title" id="relatedMapsTitle">Карты районов области</span>
+          <span class="related-maps-title" id="relatedMapsTitle" data-i18n="relatedTitle">Карты районов области</span>
           <button class="related-back-button" id="relatedBackButton" type="button" hidden></button>
         </div>
         <div class="related-maps-list" id="relatedMapsList"></div>
@@ -179,7 +185,7 @@
         <div class="viewer-shield" aria-hidden="true"></div>
         <div class="viewer-watermark" aria-hidden="true">LOCUS · ktesifon-star.github.io/locus</div>
       </div>
-      <p class="viewer-hint">Колёсико мыши — масштаб · Esc — закрыть</p>
+      <p class="viewer-hint" data-i18n="viewerHint">Колёсико мыши — масштаб · Esc — закрыть</p>
     </div>
   </dialog>
 
