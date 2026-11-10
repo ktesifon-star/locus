@@ -220,7 +220,6 @@ function renderMaps() {
         <span class="map-thumb">
           <img src="${map.thumb}" alt="${getMapTitle(map)}" loading="lazy" decoding="async" draggable="false">
         </span>
-        <span class="map-type-badge">${map.type === 'region' ? t('regionBadge') : t('districtBadge')}</span>
         <span class="map-label">
           <span class="map-title">${getMapTitle(map)}</span>
         </span>
