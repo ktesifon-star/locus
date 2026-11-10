@@ -1,4 +1,5 @@
 const maps = [
+  { id: 'mangystau', src: 'images/maps/map11.png', thumb: 'images/thumbs/map11.wbm', portrait: true, title: 'Мангистауская область', region: 'Мангистауская область', type: 'region', year: '2026' },
   { id: 'akmola', src: 'images/maps/map6.jpg', thumb: 'images/thumbs/map6.jpg', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { id: 'west-kazakhstan', src: 'images/maps/map7.jpg', thumb: 'images/thumbs/map7.jpg', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
   { id: 'atyrau', src: 'images/maps/map9.jpg', thumb: 'images/thumbs/map9.jpg', title: 'Атырауская область', region: 'Атырауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
@@ -14,6 +15,7 @@ const maps = [
 
 /* Билингвальный интерфейс: оригинальные названия карт хранятся для стабильной аналитики. */
 const mapNamesKk = {
+  'mangystau': { title: 'Маңғыстау облысы', region: 'Маңғыстау облысы' },
   'akmola': { title: 'Ақмола облысы', region: 'Ақмола облысы' },
   'west-kazakhstan': { title: 'Батыс Қазақстан облысы', region: 'Батыс Қазақстан облысы' },
   'atyrau': { title: 'Атырау облысы', region: 'Атырау облысы' },
@@ -215,10 +217,10 @@ function renderMaps() {
   filtered = sortMapsByTitle(filtered);
 
   grid.innerHTML = filtered.map(map => `
-    <article class="map-card">
+    <article class="map-card${map.portrait ? ' map-card--portrait' : ''}">
       <button class="map-card-button" type="button" data-map-id="${map.id}" aria-label="${t('openMap')} ${getMapTitle(map)}">
         <span class="map-thumb">
-          <img src="${map.thumb}" alt="${getMapTitle(map)}" loading="lazy" decoding="async" draggable="false">
+          <img src="${map.thumb}" alt="${getMapTitle(map)}" loading="lazy" decoding="async" draggable="false"${map.portrait ? ` data-fallback-src="${map.src}"` : ''}>
         </span>
         <span class="map-label">
           <span class="map-title">${getMapTitle(map)}</span>
@@ -336,6 +338,16 @@ function closeMap() {
   viewerImage.removeAttribute('src');
   document.body.style.overflow = '';
 }
+
+// If a thumbnail has an unsupported format, load the full image instead.
+grid.addEventListener('error', event => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement)) return;
+  const fallback = image.dataset.fallbackSrc;
+  if (fallback && image.getAttribute('src') !== fallback) {
+    image.src = fallback;
+  }
+}, true);
 
 grid.addEventListener('click', event => {
   const button = event.target.closest('.map-card-button');
