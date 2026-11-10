@@ -273,30 +273,36 @@ h1 {
   background: var(--paper);
 }
 .support-strip {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px 24px;
   max-width: 1320px;
   margin: 0 auto;
   padding: 12px 20px;
-  border: 1px solid var(--line);
+  border: 1px solid #cd796a;
   border-radius: 14px;
-  background: var(--white);
+  background: #fff0df;
 }
 .support-message {
-  flex: 1 1 400px;
   margin: 0;
+  color: #773f33;
   font-size: .92rem;
   line-height: 1.5;
+  text-align: center;
 }
 .support-phone {
-  flex: 0 0 auto;
-  color: var(--brand-dark);
+  position: absolute;
+  right: 20px;
+  color: #773f33;
   font-weight: 800;
   white-space: nowrap;
   text-decoration: none;
+}
+@media (max-width: 1150px) {
+  .support-strip { flex-direction: column; }
+  .support-phone { position: static; }
 }
 .support-phone:hover { text-decoration: underline; }
 .support-phone:focus-visible { outline: 2px solid var(--brand-dark); outline-offset: 4px; }
