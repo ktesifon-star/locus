@@ -218,6 +218,40 @@ h1 {
 .hero-stats dt { font-size: 1.6rem; font-weight: 800; }
 .hero-stats dd { margin: 3px 0 0; color: rgba(255,255,255,.58); font-size: .78rem; }
 
+/* Краткая строка поддержки между баннером и каталогом */
+.support-section {
+  padding: 16px clamp(20px, 6vw, 90px) 0;
+  background: var(--paper);
+}
+.support-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+}
+.support-message {
+  flex: 1 1 400px;
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+.support-phone {
+  flex: 0 0 auto;
+  color: var(--brand-dark);
+  font-weight: 800;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.support-phone:hover { text-decoration: underline; }
+.support-phone:focus-visible { outline: 2px solid var(--brand-dark); outline-offset: 4px; }
+
 .catalog-section { padding: 90px clamp(20px, 6vw, 90px); }
 .catalog-section { max-width: 1500px; margin: 0 auto; }
 .section-heading {
