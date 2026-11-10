@@ -402,23 +402,6 @@ h2 {
   background: linear-gradient(to bottom, transparent, rgba(8,24,22,.62));
   pointer-events: none;
 }
-.map-type-badge {
-  position: absolute;
-  z-index: 2;
-  top: 12px;
-  left: 12px;
-  padding: 7px 9px;
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(17,49,45,.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: .66rem;
-  font-weight: 900;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
 .map-label {
   position: absolute;
   z-index: 2;
@@ -426,6 +409,7 @@ h2 {
   right: 12px;
   bottom: 12px;
   padding: 12px 14px;
+  text-align: center;
   border: 1px solid rgba(255,255,255,.18);
   border-radius: 13px;
   color: #fff;
