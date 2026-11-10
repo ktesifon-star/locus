@@ -273,17 +273,18 @@ h1 {
   background: var(--paper);
 }
 .support-strip {
-  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px 24px;
+  gap: 5px;
   max-width: 1320px;
   margin: 0 auto;
   padding: 12px 20px;
   border: 1px solid #cd796a;
   border-radius: 14px;
   background: #fff0df;
+  text-align: center;
 }
 .support-message {
   margin: 0;
@@ -293,16 +294,12 @@ h1 {
   text-align: center;
 }
 .support-phone {
-  position: absolute;
-  right: 20px;
+  display: block;
   color: #773f33;
   font-weight: 800;
   white-space: nowrap;
+  text-align: center;
   text-decoration: none;
-}
-@media (max-width: 1150px) {
-  .support-strip { flex-direction: column; }
-  .support-phone { position: static; }
 }
 .support-phone:hover { text-decoration: underline; }
 .support-phone:focus-visible { outline: 2px solid var(--brand-dark); outline-offset: 4px; }
