@@ -1,5 +1,5 @@
 const maps = [
-  { id: 'mangystau', src: 'images/maps/map11.png', thumb: 'images/thumbs/map11.wbm', portrait: true, title: 'Мангистауская область', region: 'Мангистауская область', type: 'region', year: '2026' },
+  { id: 'mangystau', src: 'images/maps/map11.png', thumb: 'images/thumbs/map11.wbm', portrait: true, title: 'Мангистауская область', region: 'Мангистауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'FABDEM' },
   { id: 'akmola', src: 'images/maps/map6.jpg', thumb: 'images/thumbs/map6.jpg', title: 'Акмолинская область', region: 'Акмолинская область', type: 'region', year: '2025', projection: 'WGS 84 / UTM zone 42N', dem: 'Copernicus GLO-30' },
   { id: 'west-kazakhstan', src: 'images/maps/map7.jpg', thumb: 'images/thumbs/map7.jpg', title: 'Западно-Казахстанская область', region: 'Западно-Казахстанская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
   { id: 'atyrau', src: 'images/maps/map9.jpg', thumb: 'images/thumbs/map9.jpg', title: 'Атырауская область', region: 'Атырауская область', type: 'region', year: '2026', projection: 'WGS 84 / UTM zone 39N', dem: 'Copernicus GLO-30' },
