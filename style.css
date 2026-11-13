@@ -297,30 +297,32 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+.support-divider {
+  color: #a76659;
+  font-size: 1rem;
+  line-height: 1;
 }
 .support-patreon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(205,121,106,.46);
-  border-radius: 50%;
-  background: rgba(255,255,255,.52);
+  width: 24px;
+  height: 24px;
   color: #d75a48;
   text-decoration: none;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  transition: color .2s ease, transform .2s ease;
 }
 .support-patreon svg {
-  width: 19px;
-  height: 19px;
+  display: block;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
 }
 .support-patreon:hover {
-  background: #fff;
-  border-color: #cd796a;
+  color: #b13d31;
   transform: translateY(-1px);
 }
 .support-patreon:focus-visible {
