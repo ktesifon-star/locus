@@ -293,6 +293,40 @@ h1 {
   line-height: 1.5;
   text-align: center;
 }
+.support-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.support-patreon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(205,121,106,.46);
+  border-radius: 50%;
+  background: rgba(255,255,255,.52);
+  color: #d75a48;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.support-patreon svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+.support-patreon:hover {
+  background: #fff;
+  border-color: #cd796a;
+  transform: translateY(-1px);
+}
+.support-patreon:focus-visible {
+  outline: 2px solid var(--brand-dark);
+  outline-offset: 3px;
+}
 .support-phone {
   display: block;
   color: #773f33;
