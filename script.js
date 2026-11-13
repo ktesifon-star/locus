@@ -437,6 +437,36 @@ document.querySelectorAll('[data-social]').forEach(link => {
 updateStats();
 setLanguage(currentLanguage);
 
+/* Фавикон в бумажном цвете из оригинального логотипа в шапке сайта. */
+function applyPaperColorFavicon() {
+  const logo = document.querySelector('.brand-logo');
+  const favicon = document.querySelector('link[rel="icon"]');
+  if (!logo || !favicon) return;
+
+  const updateIcon = () => {
+    if (!logo.naturalWidth || !logo.naturalHeight) return;
+    const size = 96;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    const maxSide = size - 6;
+    const ratio = Math.min(maxSide / logo.naturalWidth, maxSide / logo.naturalHeight);
+    const width = logo.naturalWidth * ratio;
+    const height = logo.naturalHeight * ratio;
+    context.drawImage(logo, (size - width) / 2, (size - height) / 2, width, height);
+    context.globalCompositeOperation = 'source-in';
+    context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--paper').trim() || '#f4f2ea';
+    context.fillRect(0, 0, size, size);
+    favicon.href = canvas.toDataURL('image/png');
+  };
+
+  if (logo.complete && logo.naturalWidth) updateIcon();
+  else logo.addEventListener('load', updateIcon, { once: true });
+}
+applyPaperColorFavicon();
+
 /* ===== Защита интерфейса карт ===== */
 function isProtectedTarget(target) {
   return target instanceof Element && !!target.closest('.map-card, .map-dialog, .viewer-stage');
